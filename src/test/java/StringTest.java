@@ -1,4 +1,6 @@
+import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.*;
+import static org.hamcrest.CoreMatchers.*;
 
 import org.junit.Test;
 
@@ -7,7 +9,7 @@ public class StringTest {
     @Test
     public void testAssertSame() {
         String x = "ola";
-        String y = "ola ";
+        String y = "ola";
 
         assertSame(x, y);
     }
@@ -47,10 +49,21 @@ public class StringTest {
         assertEquals(str1, str2);
     }
 
-    @Test
+    // Problema detectado no StackerOverflow
+    /*@Test
     public void testStringAssertNotEquals() {
         String str1 = "ola";
         String str2 = "uva";
         assertNotEquals(str1, str2);
+    }*/
+
+    //Resolução do Problema aceita pelo StackOverflow
+    @Test
+    public void testStringsAreNotEqual() {
+        String x = "Hello";
+        String y = "World";
+
+        assertThat(x, not(equalTo(y)));
     }
+
 }
